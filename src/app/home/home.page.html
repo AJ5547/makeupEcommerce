@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Page One</ion-title>
+    <ion-nav-link router-direction="forward" routerLink="/product">
+      <ion-button color="secondary" fill="clear">Go to Page Two</ion-button>
+    </ion-nav-link>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding mainContent">
+  <ion-card class="productCard" *ngFor="let product of products">
+    <img alt="{{product.name}}" src="{{product.api_featured_image}}" />
+    <ion-card-header class="row">
+      <ion-card-title>{{ product.name}}</ion-card-title>
+      <ion-card-subtitle class="price"
+        >{{product.price_sign}}{{ product.price}}</ion-card-subtitle
+      >
+    </ion-card-header>
+
+    <ion-card-content> {{product.description}} </ion-card-content>
+    <ion-button color="primary">Add To Cart</ion-button>
+  </ion-card>
+</ion-content>

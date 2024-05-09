@@ -1,13 +1,22 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>product</ion-title>
+    <ion-title>Products</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">product</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <ion-card *ngIf="singleProduct">
+    <ion-card-header>
+      <ion-card-title>{{ singleProduct.name }}</ion-card-title>
+      <!-- Replace 'name' with the actual property name -->
+    </ion-card-header>
+
+    <ion-card-content>
+      <img
+        alt="{{singleProduct.name}}"
+        src="{{singleProduct.api_featured_image}}"
+      />
+      <!-- Replace 'Lippie Pencil' with the actual property name -->
+    </ion-card-content>
+  </ion-card>
 </ion-content>

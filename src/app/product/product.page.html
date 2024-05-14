@@ -1,5 +1,5 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="secondary">
     <ion-title>Products</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -15,18 +15,16 @@
       </div>
       <!-- Replace 'Lippie Pencil' with the actual property name -->
       <div class="otherHalf">
-        <div class="row">
-          <h1>{{ singleProduct.name }}</h1>
-          <h2>{{singleProduct.price_sign}} {{ singleProduct.price }}</h2>
+        <div class="header">
+          <div class="row">
+            <h1>{{ singleProduct.name }}</h1>
+            <h2>{{singleProduct.price_sign}} {{ singleProduct.price }}</h2>
+          </div>
+          <ion-item-divider></ion-item-divider>
         </div>
-        <ion-item-divider></ion-item-divider>
-        <br />
         <div class="row">
           <p class="description">{{ singleProduct.description }}</p>
         </div>
-        <br />
-        <br />
-        <br />
         <div class="row">
           <ul>
             <li *ngFor="let color of singleProduct.product_colors">
@@ -38,9 +36,6 @@
             </li>
           </ul>
         </div>
-        <br />
-        <br />
-        <br />
         <div class="row">
           <ion-button
             fill="outline"
@@ -58,7 +53,7 @@
     <div class="similarProductsContainer">
       <ion-card
         class="productCard"
-        *ngFor="let product of similarProducts.slice(1,6)"
+        *ngFor="let product of similarProducts.slice(1,11)"
       >
         <img
           alt="{{product.name}}"

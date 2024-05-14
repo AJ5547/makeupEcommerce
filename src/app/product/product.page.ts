@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonItemDivider, IonButton } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonItemDivider, IonButton, IonItem } from '@ionic/angular/standalone';
 import { single } from 'rxjs';
 
 @Component({
@@ -10,7 +10,7 @@ import { single } from 'rxjs';
   templateUrl: './product.page.html',
   styleUrls: ['./product.page.scss'],
   standalone: true,
-  imports: [IonButton, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonItemDivider]
+  imports: [IonItem, IonButton, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonItemDivider]
 })
 export class ProductPage implements OnInit {
 
@@ -31,13 +31,13 @@ export class ProductPage implements OnInit {
 
         this.singleProduct.tag_list.forEach((tag: any[]) => {
           const dynamicValue = tag;
-          const limiter = '&product_limit=5';
+          const limiter = '&product_limit=10';
           const dynamicUrl = `${this.apiUrl}${dynamicValue}${limiter}`;
 
           this.http.get<any>(dynamicUrl)
             .subscribe((similar) => {
-              this.similarProducts = [...this.similarProducts, ...similar];
-              console.log(this.similarProducts.slice(1, 6)); // Logging first 6 similar products
+              this.similarProducts = [...similar];
+              console.log(this.similarProducts.slice(1, 10)); // Logging first 6 similar products
             });
         });
       });

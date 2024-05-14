@@ -6,17 +6,44 @@
 
 <ion-content>
   <ion-card *ngIf="singleProduct">
-    <ion-card-header>
-      <ion-card-title>{{ singleProduct.name }}</ion-card-title>
-      <!-- Replace 'name' with the actual property name -->
-    </ion-card-header>
-
     <ion-card-content>
-      <img
-        alt="{{singleProduct.name}}"
-        src="{{singleProduct.api_featured_image}}"
-      />
+      <div class="image">
+        <img
+          alt="{{singleProduct.name}}"
+          src="{{singleProduct.api_featured_image}}"
+        />
+      </div>
       <!-- Replace 'Lippie Pencil' with the actual property name -->
+      <div class="otherHalf">
+        <div class="row">
+          <h1>{{ singleProduct.name }}</h1>
+          <h2>{{singleProduct.price_sign}} {{ singleProduct.price }}</h2>
+        </div>
+        <ion-item-divider></ion-item-divider>
+        <br />
+        <div class="row">
+          <p class="description">{{ singleProduct.description }}</p>
+          <br />
+          <ul>
+            <li *ngFor="let color of singleProduct.product_colors">
+              <p
+                class="productColor"
+                [ngStyle]="{'background-color': color.hex_value}"
+              ></p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="row">
+          <ion-button
+            fill="outline"
+            color="secondary"
+            (click)="addToCart()"
+            size="medium"
+            >Add to Cart</ion-button
+          >
+        </div>
+      </div>
     </ion-card-content>
   </ion-card>
 </ion-content>

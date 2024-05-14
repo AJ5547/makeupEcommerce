@@ -53,11 +53,20 @@
       </div>
     </ion-card-content>
   </ion-card>
-  <ion-card class="productCard" *ngFor="let product of similarProducts">
-    <img
-      alt="{{product.name}}"
-      src="{{product.api_featured_image}}"
-      class="similarProductImg"
-    />
-  </ion-card>
+  <div class="similarProducts">
+    <h2>Similar Products</h2>
+    <div class="similarProductsContainer">
+      <ion-card
+        class="productCard"
+        *ngFor="let product of similarProducts.slice(1,6)"
+      >
+        <img
+          alt="{{product.name}}"
+          src="{{product.api_featured_image}}"
+          class="similarProductImg"
+        />
+        <ion-card-title>{{product.name}}</ion-card-title>
+      </ion-card>
+    </div>
+  </div>
 </ion-content>

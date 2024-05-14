@@ -30,17 +30,17 @@ export class ProductPage implements OnInit {
         console.log(data);
 
         this.singleProduct.tag_list.forEach((tag: any[]) => {
+          const dynamicValue = tag;
+          const limiter = '&product_limit=5';
+          const dynamicUrl = `${this.apiUrl}${dynamicValue}${limiter}`;
 
-          const dynamicValue = tag[1];
-          const dynamicUrl = `${this.apiUrl}${dynamicValue}`;
           this.http.get<any>(dynamicUrl)
             .subscribe((similar) => {
-              this.similarProducts = similar;
-              console.log(similar);
+              this.similarProducts = [...this.similarProducts, ...similar];
+              console.log(this.similarProducts.slice(1, 6)); // Logging first 6 similar products
             });
         });
       });
-
-
   }
+
 }

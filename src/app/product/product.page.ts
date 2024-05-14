@@ -16,16 +16,31 @@ export class ProductPage implements OnInit {
 
 
   constructor(private http: HttpClient) { }
+  apiUrl = 'http://makeup-api.herokuapp.com/api/v1/products.json?product_tags=';
 
+  similarProducts: any[] = [];
   singleProduct: any;
   addToCart() {
-    console.log(this.singleProduct + ' Product added to cart');
+    console.log(' Product added to cart');
   }
   ngOnInit() {
     this.http.get<any>('http://makeup-api.herokuapp.com/api/v1/products/1048.json')
       .subscribe((data) => {
         this.singleProduct = data;
         console.log(data);
+
+        this.singleProduct.tag_list.forEach((tag: any[]) => {
+
+          const dynamicValue = tag[1];
+          const dynamicUrl = `${this.apiUrl}${dynamicValue}`;
+          this.http.get<any>(dynamicUrl)
+            .subscribe((similar) => {
+              this.similarProducts = similar;
+              console.log(similar);
+            });
+        });
       });
+
+
   }
 }

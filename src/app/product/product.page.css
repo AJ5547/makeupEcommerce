@@ -1,16 +1,33 @@
+ion-card {
+  height: 55vh;
+}
+
 ion-card-content {
   display: flex;
+  margin: 15px;
+  margin-bottom: 0;
+  padding: 0;
 }
 
 .image {
-  width: 50%;
+  width: 70%;
 }
 
-.otherSide {
-  width: 5%;
+img {
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.otherHalf {
+  width: 70%;
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  align-items: space-between;
+}
+
+.otherHalf > * {
+  margin-top: 10px;
 }
 
 .row {
@@ -25,4 +42,22 @@ ion-card-content {
   margin: 0 15px;
   color: black;
   font-size: larger;
+}
+
+.productColor {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin: 2px;
+}
+
+ul {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.similarProductImg {
+  width: 200px;
 }/*# sourceMappingURL=product.page.css.map */

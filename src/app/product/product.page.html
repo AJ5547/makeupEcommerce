@@ -23,17 +23,24 @@
         <br />
         <div class="row">
           <p class="description">{{ singleProduct.description }}</p>
-          <br />
+        </div>
+        <br />
+        <br />
+        <br />
+        <div class="row">
           <ul>
             <li *ngFor="let color of singleProduct.product_colors">
               <p
                 class="productColor"
                 [ngStyle]="{'background-color': color.hex_value}"
+                title="{{ color.colour_name }}"
               ></p>
             </li>
           </ul>
         </div>
-
+        <br />
+        <br />
+        <br />
         <div class="row">
           <ion-button
             fill="outline"
@@ -45,5 +52,12 @@
         </div>
       </div>
     </ion-card-content>
+  </ion-card>
+  <ion-card class="productCard" *ngFor="let product of similarProducts">
+    <img
+      alt="{{product.name}}"
+      src="{{product.api_featured_image}}"
+      class="similarProductImg"
+    />
   </ion-card>
 </ion-content>

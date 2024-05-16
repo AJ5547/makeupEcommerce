@@ -1,24 +1,44 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar color="secondary">
     <ion-title>Page One</ion-title>
     <ion-nav-link router-direction="forward" routerLink="/product">
-      <ion-button color="secondary" fill="clear" href="/product"
+      <ion-button color="primary" fill="clear" href="/product"
         >Go to Page Two</ion-button
       >
     </ion-nav-link>
   </ion-toolbar>
 </ion-header>
 <ion-content class="ion-padding mainContent">
-  <ion-card class="productCard" *ngFor="let product of products">
-    <img alt="{{product.name}}" src="{{product.api_featured_image}}" />
-    <ion-card-header class="row">
-      <ion-card-title>{{ product.name}}</ion-card-title>
-      <ion-card-subtitle class="price"
-        >{{product.price_sign}}{{ product.price}}</ion-card-subtitle
+  <div class="searchArea">
+    <ion-searchbar></ion-searchbar>
+    <ion-select class="filter" label="Filter" label-placement="Filter">
+      <ion-select-option value="product_type">Product Type</ion-select-option>
+      <ion-select-option value="product_category"
+        >Product Category</ion-select-option
       >
-    </ion-card-header>
+      <ion-select-option value="brand">Brand</ion-select-option>
+    </ion-select>
+  </div>
+  <div class="flex">
+    <ion-card class="productCard" *ngFor="let product of products.slice(0,51)">
+      <img
+        class="productImage"
+        alt="{{product.name}}"
+        src="{{product.api_featured_image}}"
+      />
+      <ion-card-header class="row">
+        <ion-card-title>
+          <a href="/product">{{ product.name}}</a>
+        </ion-card-title>
+        <ion-card-subtitle class="price"
+          >{{product.price_sign}}{{ product.price}}0</ion-card-subtitle
+        >
+      </ion-card-header>
 
-    <ion-card-content> {{product.description}} </ion-card-content>
-    <ion-button color="primary">Add To Cart</ion-button>
-  </ion-card>
+      <ion-card-content class="description">
+        {{product.description}}
+      </ion-card-content>
+      <ion-button color="primary">Add To Cart</ion-button>
+    </ion-card>
+  </div>
 </ion-content>

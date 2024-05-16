@@ -17,14 +17,15 @@ export class ProductPage implements OnInit {
 
   constructor(private http: HttpClient) { }
   apiUrl = 'http://makeup-api.herokuapp.com/api/v1/products.json?product_tags=';
-
+  productUrl = 'http://makeup-api.herokuapp.com/api/v1/products/';
+  dynamicProduct = '1032';
   similarProducts: any[] = [];
   singleProduct: any;
   addToCart() {
     console.log(' Product added to cart');
   }
   ngOnInit() {
-    this.http.get<any>('http://makeup-api.herokuapp.com/api/v1/products/1048.json')
+    this.http.get<any>(`http://makeup-api.herokuapp.com/api/v1/products/${this.dynamicProduct}.json`)
       .subscribe((data) => {
         this.singleProduct = data;
         console.log(data);
@@ -34,6 +35,7 @@ export class ProductPage implements OnInit {
           const limiter = '&product_limit=10';
           const dynamicUrl = `${this.apiUrl}${dynamicValue}${limiter}`;
 
+          console.log(dynamicUrl);
           this.http.get<any>(dynamicUrl)
             .subscribe((similar) => {
               this.similarProducts = [...similar];

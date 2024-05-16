@@ -1,10 +1,46 @@
-.mainContent {
+ion-content {
+  width: 100%;
+}
+.searchArea {
   width: 100%;
   display: flex;
-  flex-flow: row wrap;
+  justify-content: space-evenly;
+}
+ion-searchbar {
+  width: 50%;
+}
+ion-select {
+  width: 7%;
+}
+a {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
 .productCard {
-  width: 25%;
+  margin: 20px 10px;
+  width: 20%;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+}
+.productImage {
+  width: 80%;
+  height: 200px;
+  object-fit: contain;
+  margin: 0 auto;
+}
+.description {
+  height: 150px;
+  overflow: scroll;
+}
+.flex {
+  justify-content: space-evenly;
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
 }
 .row {
   display: flex;
